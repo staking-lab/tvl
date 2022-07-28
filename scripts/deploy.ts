@@ -8,20 +8,20 @@ async function main() {
     // manually to make sure everything is compiled
     // await hre.run('compile');
     const [singer] = await ethers.getSigners();
-    console.log(`admin of sKCSPrice: `, singer.address);
+    console.log(`admin of sKCSTVL: `, singer.address);
 
     // deploy process redemption
-    console.log(`ready to deploy sKCSPrice contract...`);
+    console.log(`ready to deploy sKCSTVL contract...`);
     const sKCSTVL = await ethers.getContractFactory("sKCSTVL");
     const tvl = await sKCSTVL.deploy();
 
-    console.log(`facet address: ${tvl.address}`);
+    console.log(`sKCSTVL address: ${tvl.address}`);
 
     /*
     * Compiled 2 Solidity files successfully
-    admin of sKCSPrice:  0x1C0E983A3853658f5b5Aa46d9772EF929AE64B90
-    ready to deploy sKCSPrice contract...
-    facet address: 0x917c559b1242150A53C11239e357E01eE9CA2203
+    admin of sKCSTVL:  0x1C0E983A3853658f5b5Aa46d9772EF929AE64B90
+    ready to deploy sKCSTVL contract...
+    sKCSTVL address: 0x3CEF6d63C299938083D0c89C812d9C6985e3Af1c
 
 * */
 

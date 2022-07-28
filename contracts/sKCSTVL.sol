@@ -54,4 +54,12 @@ contract sKCSTVL {
 
         return tvl;
     }
+
+    function getLatestLockedKCS() external view returns (uint) {
+        (, , uint256 fee) = sKCS.kcsBalances();
+        (uint256 kcsAmount, ) = sKCS.exchangeRate();
+
+        uint256 amount = kcsAmount + fee;
+        return amount;
+    }
 }

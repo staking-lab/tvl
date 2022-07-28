@@ -79,6 +79,7 @@ contract sKCSTVL {
     }
 
     /// @dev Returns the latest sKCS TVL
+    /// TVL should divide by 1e18 and divide by 1e8
     function getLatestsKCSTVL() external view returns (uint) {
 
         // decimals is 8
@@ -86,8 +87,16 @@ contract sKCSTVL {
         (, , uint256 fee) = sKCS.kcsBalances();
         (uint256 kcsAmount, ) = sKCS.exchangeRate();
 
-        uint256 tvl = (kcsAmount + fee) * uint256(kcsPrice) / 1e8;
+        uint256 tvl = (kcsAmount + fee) * uint256(kcsPrice);
 
         return tvl;
+    }
+
+    function getLatestLockedKCS() external view returns (uint) {
+        (, , uint256 fee) = sKCS.kcsBalances();
+        (uint256 kcsAmount, ) = sKCS.exchangeRate();
+
+        uint256 amount = kcsAmount + fee;
+        return amount;
     }
 }
